@@ -1,14 +1,13 @@
-//src/products/dto/update-product.dto.ts
+// src/products/dto/update-product.dto.ts
+import { IsString, IsNumber, IsOptional, Min } from 'class-validator';
 
-import { IsNumber, IsOptional, IsString, Min } from "class-validator";
+export class UpdateProductDto {
+  @IsString()
+  @IsOptional()
+  name?: string;
 
-export class updateProductDto{
-    @IsString()
-    @IsOptional()
-    name?: string;
-
-    @IsNumber()
-    @Min(0)
-    @IsOptional()
-    price?: number;
+  @IsNumber()
+  @Min(0)
+  @IsOptional()
+  price?: number;
 }

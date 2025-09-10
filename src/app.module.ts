@@ -4,6 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductsModule } from './products/products.module';
+import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -12,12 +14,14 @@ import { ProductsModule } from './products/products.module';
       host: 'localhost', // ou 127.0.0.1
       port: 3306,
       username: 'root',
-      password: '1234', // <-- MUITO IMPORTANTE: Coloque a senha que você configurou na instalação do MySQL
-      database: 'products2', // O nome do banco que criamos no Workbench
+      password: '123456', // <-- MUITO IMPORTANTE: Coloque a senha que você configurou na instalação do MySQL
+      database: 'products', // O nome do banco que criamos no Workbench
       entities: [__dirname + '/**/*.entity{.ts,.js}'], // Encontra as entidades automaticamente
-      synchronize: true, // Apenas para desenvolvimento! Cria as tabelas automaticamente.
+      synchronize: false, // Apenas para desenvolvimento! Cria as tabelas automaticamente.
     }),
     ProductsModule,
+    UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
